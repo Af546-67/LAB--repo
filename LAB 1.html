@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body style="background-image: url('C:\Users\Admin\Pictures\ec47fe9578b89cc2ff3aee3324f5139f.jpg');">
+<table id="ncTabe" border="1" style="border-color:rgb(10, 235, 194); background-color: #ebf0f5;"> 
+  <tr>
+    <td>Row1 Col1</td> 
+    <td>Row1 Col2</td>
+  </tr> 
+  <tr>
+    <td>Row2 Col1</td> 
+    <td>Row2 Col2</td>
+  </tr> 
+  <tr>
+    <td>Row3 Col1</td> 
+    <td>Row3 Col2</td>
+  </tr> 
+  <tr>
+    <td>Row4 Col1</td> 
+    <td>Row4 Col2</td>
+  </tr> 
+  <tr>
+    <td>Row5 Col1</td> 
+    <td>Row5 Col2</td>
+  </tr> 
+</table><br> 
+<input type="button" onclick="insertRowBottom()" value="Insert row">  
+<input type="button" onclick="deleteRowTop()" value="Delete row">  
+<input type="button" onclick="zoomIn()" value="Zoom In">
+<input type="button" onclick="zoomOut()" value="Zoom Out">
+</br>
+<div id="message"></div>
+<script>
+var x = 5;
+var currentZoom = 1.0;
+var zoomStep = 0.1;
+
+function insertRowBottom() {
+  var tbl = document.getElementById("ncTabe");
+  x++;
+  var rw = tbl.insertRow(-1);
+  var tablecell1 = rw.insertCell(0);
+  var tablecell2 = rw.insertCell(1);
+  tablecell1.innerHTML = "Row " + x + " Col 1";
+  tablecell2.innerHTML = "Row " + x + "  Col 2";
+}
+
+function deleteRowTop() {
+  var tbl = document.getElementById("ncTabe");
+  var counter = tbl.rows.length;
+  tbl.deleteRow(0);
+  
+  if (counter === 1) {
+    document.getElementById("message").innerText = "No more rows to delete.";
+  }
+}
+
+function zoomIn() {
+  currentZoom += zoomStep;
+  applyZoom();
+}
+
+function zoomOut() {
+  currentZoom -= zoomStep;
+  applyZoom();
+}
+
+function applyZoom() {
+  document.body.style.zoom = currentZoom;
+}
+</script>
+</body>
+</html>
+
